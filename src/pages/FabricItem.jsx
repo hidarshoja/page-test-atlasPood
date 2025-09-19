@@ -16,11 +16,9 @@ import ReviewDrawer from "../components/ReviewDrawer";
 export default function FabricItem() {
   const navigate = useNavigate();
   const { state } = useLocation();
-
   const image = state?.image || "/sheer.webp";
   const title = state?.title || "Curtain";
   const priceText = state?.priceText || "0 Tomans";
-
   const [openIndex, setOpenIndex] = useState(0);
   const [mainImage, setMainImage] = useState(image);
   const [mount, setMount] = useState("");
@@ -33,20 +31,15 @@ export default function FabricItem() {
   const [hardware, setHardware] = useState("");
   const [accessories, setAccessories] = useState([]);
   const [lining, setLining] = useState([]);
-
   const fabricOptions = [
     { name: "Rose", image: "/sheer.webp" },
     { name: "Grey", image: "/sheer2.webp" },
     { name: "Navy", image: "/sheer3.webp" },
   ];
-  const [selectedFabric, setSelectedFabric] = useState(
-    state?.colorName || fabricOptions[0].name
-  );
-
+  const [selectedFabric, setSelectedFabric] = useState( state?.colorName || fabricOptions[0].name);
   const [showModal, setShowModal] = useState(false);
   const [showReview, setShowReview] = useState(false);
   const [validationAttempted, setValidationAttempted] = useState(false);
-
   const summaries = {
     fabric: selectedFabric || undefined,
     mount: mount ? mount.toUpperCase() : undefined,
@@ -59,7 +52,6 @@ export default function FabricItem() {
     accessories: accessories.length ? `${accessories.join(", ")}` : undefined,
     lining: lining.length ? `${lining.join(", ")}` : undefined,
   };
-
   const getMissingSteps = () => {
     const missing = [];
     if (!selectedFabric) missing.push("Drapery Material & Color");
@@ -70,13 +62,11 @@ export default function FabricItem() {
     if (!panelType) missing.push("Panel Type");
     if (!grommetFinish) missing.push("Grommet Finish");
     if (!hardware) missing.push("Hardware");
-    // Accessories optional - skip
     return missing;
   };
 
   return (
     <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-      {/* تصویر سمت چپ */}
       <div>
         <img
           src={mainImage}
@@ -84,8 +74,6 @@ export default function FabricItem() {
           className="w-full rounded-lg object-cover"
         />
       </div>
-
-      {/* آکاردئون سمت راست */}
       <div className="bg-white rounded-lg border">
         <div className="px-4 py-4 border-b">
           <h1 className="text-xl font-semibold text-gray-900">{title}</h1>
@@ -109,7 +97,6 @@ export default function FabricItem() {
               onNext={() => setOpenIndex(1)}
             />
           </AccordionItem>
-
           <AccordionItem
             number={2}
             title="Mount Position"
@@ -124,7 +111,6 @@ export default function FabricItem() {
               onNext={() => setOpenIndex(2)}
             />
           </AccordionItem>
-
           <AccordionItem
             number={3}
             title="Measurements"
@@ -143,7 +129,6 @@ export default function FabricItem() {
               onNext={() => setOpenIndex(3)}
             />
           </AccordionItem>
-
           <AccordionItem
             number={4}
             title="Lining"
@@ -162,7 +147,6 @@ export default function FabricItem() {
               onNext={() => setOpenIndex(4)}
             />
           </AccordionItem>
-
           <AccordionItem
             number={5}
             title="Panel Coverage"
@@ -177,7 +161,6 @@ export default function FabricItem() {
               onNext={() => setOpenIndex(5)}
             />
           </AccordionItem>
-
           <AccordionItem
             number={6}
             title="Panel Type"
@@ -192,7 +175,6 @@ export default function FabricItem() {
               onNext={() => setOpenIndex(6)}
             />
           </AccordionItem>
-
           <AccordionItem
             number={7}
             title="Grommet Finish"

@@ -45,6 +45,7 @@ export default function FabricItem() {
 
   const [showModal, setShowModal] = useState(false);
   const [showReview, setShowReview] = useState(false);
+  const [validationAttempted, setValidationAttempted] = useState(false);
 
   const summaries = {
     fabric: selectedFabric || undefined,
@@ -95,7 +96,7 @@ export default function FabricItem() {
             number={1}
             title="Drapery Material & Color"
             summary={summaries.fabric}
-            error={!summaries.fabric}
+            error={validationAttempted && !summaries.fabric}
             open={openIndex === 0}
             onOpen={() => setOpenIndex(openIndex === 0 ? -1 : 0)}
           >
@@ -113,7 +114,7 @@ export default function FabricItem() {
             number={2}
             title="Mount Position"
             summary={summaries.mount}
-            error={!summaries.mount}
+            error={validationAttempted && !summaries.mount}
             open={openIndex === 1}
             onOpen={() => setOpenIndex(openIndex === 1 ? -1 : 1)}
           >
@@ -128,7 +129,7 @@ export default function FabricItem() {
             number={3}
             title="Measurements"
             summary={summaries.measurements}
-            error={!summaries.measurements}
+            error={validationAttempted && !summaries.measurements}
             open={openIndex === 2}
             onOpen={() => setOpenIndex(openIndex === 2 ? -1 : 2)}
           >
@@ -147,7 +148,7 @@ export default function FabricItem() {
             number={4}
             title="Lining"
             summary={summaries.lining}
-            error={!summaries.lining}
+            error={validationAttempted && !summaries.lining}
             open={openIndex === 3}
             onOpen={() => setOpenIndex(openIndex === 3 ? -1 : 3)}
           >
@@ -166,7 +167,7 @@ export default function FabricItem() {
             number={5}
             title="Panel Coverage"
             summary={summaries.panelCoverage}
-            error={!summaries.panelCoverage}
+            error={validationAttempted && !summaries.panelCoverage}
             open={openIndex === 4}
             onOpen={() => setOpenIndex(openIndex === 4 ? -1 : 4)}
           >
@@ -181,7 +182,7 @@ export default function FabricItem() {
             number={6}
             title="Panel Type"
             summary={summaries.panelType}
-            error={!summaries.panelType}
+            error={validationAttempted && !summaries.panelType}
             open={openIndex === 5}
             onOpen={() => setOpenIndex(openIndex === 5 ? -1 : 5)}
           >
@@ -196,7 +197,7 @@ export default function FabricItem() {
             number={7}
             title="Grommet Finish"
             summary={summaries.grommetFinish}
-            error={!summaries.grommetFinish}
+            error={validationAttempted && !summaries.grommetFinish}
             open={openIndex === 6}
             onOpen={() => setOpenIndex(openIndex === 6 ? -1 : 6)}
           >
@@ -211,7 +212,7 @@ export default function FabricItem() {
             number={8}
             title="Hardware"
             summary={summaries.hardware}
-            error={!summaries.hardware}
+            error={validationAttempted && !summaries.hardware}
             open={openIndex === 7}
             onOpen={() => setOpenIndex(openIndex === 7 ? -1 : 7)}
           >
@@ -244,6 +245,7 @@ export default function FabricItem() {
           <button
             className="flex-1 bg-[#49443e] text-white rounded py-2"
             onClick={() => {
+              setValidationAttempted(true);
               const missing = getMissingSteps();
               if (missing.length) {
                 setShowModal(true);

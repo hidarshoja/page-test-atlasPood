@@ -1,0 +1,35 @@
+import React from "react";
+
+export default function StepAccessories({
+  options = ["rings", "tie-backs", "finials"],
+  values = [],
+  onToggle,
+  onNext,
+}) {
+  return (
+    <>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {options.map((opt) => (
+          <label key={opt} className="flex items-center gap-2 capitalize">
+            <input
+              type="checkbox"
+              value={opt}
+              checked={values.includes(opt)}
+              onChange={(e) => onToggle(opt, e.target.checked)}
+            />
+            {opt}
+          </label>
+        ))}
+      </div>
+      <div className="mt-4 flex item-center justify-end">
+        <button
+          className="bg-[#49443e] text-white rounded px-4 py-2 text-sm"
+          onClick={onNext}
+        >
+          NEXT STEP
+        </button>
+      </div>
+    </>
+  );
+}
+

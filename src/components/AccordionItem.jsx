@@ -10,13 +10,13 @@ export default function AccordionItem({
   error = false,
 }) {
   return (
-    <div className="border-b-2 border-white bg-[#ece9e580] px-2">
+    <div className="border-b-2 border-white bg-[#ece9e580]">
       <button
         type="button"
         onClick={onOpen}
         className="w-full flex items-center justify-between py-3"
       >
-        <span className="flex items-center gap-3">
+        <span className="flex items-center gap-3 pl-1">
           {typeof number !== "undefined" ? (
             <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border text-xs text-gray-700">
               {number}
@@ -34,7 +34,7 @@ export default function AccordionItem({
           </span>
         </span>
         {summary ? (
-          <span className="text-xs font-medium text-gray-600 uppercase tracking-wide">
+          <span className="text-xs font-medium text-gray-600 uppercase tracking-wide pr-1">
             {summary}
           </span>
         ) : error ? (
@@ -48,7 +48,7 @@ export default function AccordionItem({
         ) : null}
       </button>
       {open ? (
-        <div className="pb-4 text-sm text-gray-700">{children}</div>
+        <div className=" text-sm text-gray-700 bg-white p-2">{children}</div>
       ) : null}
     </div>
   );

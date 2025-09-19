@@ -38,13 +38,7 @@ export default function AccordionItem({
             {summary}
           </span>
         ) : error ? (
-          <span
-            aria-label="incomplete"
-            className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-red-500 text-white text-xs mr-1"
-            title="Incomplete"
-          >
-            !
-          </span>
+          <div className="stepRequired" />
         ) : null}
       </button>
       {open ? (

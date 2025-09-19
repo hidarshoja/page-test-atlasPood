@@ -225,7 +225,7 @@ export default function FabricItem() {
 
           <AccordionItem
             number={9}
-            title="Accessories"
+            title="Accessories (option)"
             summary={summaries.accessories}
             open={openIndex === 8}
             onOpen={() => setOpenIndex(openIndex === 8 ? -1 : 8)}

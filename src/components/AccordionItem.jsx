@@ -22,7 +22,16 @@ export default function AccordionItem({
               {number}
             </span>
           ) : null}
-          <span className="text-sm font-medium text-gray-900">{title}</span>
+          <span className="text-sm font-medium text-gray-900">
+            {title.includes("(option)") ? (
+              <>
+                {title.replace(" (option)", "")}
+                <span className="text-gray-400 font-normal"> (option)</span>
+              </>
+            ) : (
+              title
+            )}
+          </span>
         </span>
         {summary ? (
           <span className="text-xs font-medium text-gray-600 uppercase tracking-wide">
